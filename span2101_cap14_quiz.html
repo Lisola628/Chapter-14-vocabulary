@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPAN 2101 | Capítulo 14: Quiz de vocabulario</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Mono:wght@400&display=swap');
+
+  :root {
+    --purple: #534AB7;
+    --purple-light: #EEEDFE;
+    --purple-dark: #3C3489;
+    --purple-darkest: #26215C;
+    --teal: #0F6E56;
+    --teal-light: #E1F5EE;
+    --teal-dark: #085041;
+    --amber: #BA7517;
+    --amber-light: #FAEEDA;
+    --red: #A32D2D;
+    --red-light: #FCEBEB;
+    --red-dark: #791F1F;
+    --text: #1a1a2e;
+    --text-muted: #555577;
+    --border: #d0cce8;
+    --border-strong: #a09cc8;
+    --bg: #f8f7ff;
+    --surface: #ffffff;
+    --success-text: #085041;
+    --error-text: #791F1F;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --purple: #AFA9EC;
+      --purple-light: #26215C;
+      --purple-dark: #CECBF6;
+      --teal: #5DCAA5;
+      --teal-light: #04342C;
+      --teal-dark: #9FE1CB;
+      --amber: #EF9F27;
+      --amber-light: #412402;
+      --red: #F09595;
+      --red-light: #501313;
+      --red-dark: #F7C1C1;
+      --text: #f0eeff;
+      --text-muted: #b0a8d8;
+      --border: #3a3560;
+      --border-strong: #6056a8;
+      --bg: #0f0d1a;
+      --surface: #1a1730;
+      --success-text: #9FE1CB;
+      --error-text: #F7C1C1;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* Skip link for keyboard users */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    background: var(--purple);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    z-index: 999;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 1rem; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+  .live-region {
+    position: absolute; left: -9999px;
+    width: 1px; height: 1px; overflow: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--purple);
+    color: white;
+    padding: 2rem 2rem 1.75rem;
+  }
+  .header-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 0.4rem;
+  }
+  header h1 {
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    font-weight: 500;
+    line-height: 1.25;
+    margin-bottom: 0.4rem;
+  }
+  header p {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.72);
+    max-width: 540px;
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+
+  /* ── NOTE ── */
+  .note {
+    background: var(--amber-light);
+    border: 1.5px solid var(--amber);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .note strong { color: var(--text); }
+
+  /* ── SCORE ROW ── */
+  .score-row {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .score-pill {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 99px;
+    padding: 6px 18px;
+    font-size: 15px;
+    color: var(--text-muted);
+  }
+  .score-pill strong { color: var(--text); font-weight: 500; }
+
+  /* ── TABS ── */
+  .tab-row {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .tab-btn {
+    border: 2px solid var(--border-strong);
+    border-radius: 99px;
+    padding: 9px 22px;
+    font-size: 15px;
+    cursor: pointer;
+    background: var(--surface);
+    color: var(--text-muted);
+    min-height: 48px;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.18s;
+  }
+  .tab-btn:hover { border-color: var(--purple); color: var(--text); }
+  .tab-btn:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+  .tab-btn[aria-selected="true"] {
+    background: var(--purple-light);
+    color: var(--purple-dark);
+    border-color: var(--purple);
+    font-weight: 500;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── SECTION LABELS ── */
+  .sec-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 1.75rem 0 0.75rem;
+  }
+  .instructions {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    line-height: 1.65;
+    max-width: 600px;
+  }
+
+  /* ── MATCHING ── */
+  .match-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 0.5rem;
+  }
+  .match-col { display: flex; flex-direction: column; gap: 7px; }
+
+  .match-card {
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 15px;
+    font-size: 15px;
+    line-height: 1.5;
+    cursor: pointer;
+    color: var(--text);
+    background: var(--surface);
+    text-align: left;
+    min-height: 52px;
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .match-card:hover:not([aria-disabled="true"]) {
+    border-color: var(--purple); background: var(--purple-light);
+  }
+  .match-card:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+  .match-card[aria-pressed="true"] {
+    border-color: var(--purple); background: var(--purple-light); color: var(--purple-dark);
+  }
+  .match-card.matched {
+    border-color: var(--teal); background: var(--teal-light);
+    color: var(--teal-dark); pointer-events: none;
+    text-decoration: line-through; opacity: 0.6;
+  }
+  .match-card.wrong {
+    border-color: var(--red); background: var(--red-light); color: var(--red-dark);
+  }
+
+  .match-fb {
+    font-size: 15px; min-height: 24px;
+    margin: 0.4rem 0; font-weight: 500;
+  }
+  .match-fb.ok { color: var(--teal); }
+  .match-fb.err { color: var(--red); }
+
+  /* ── MULTIPLE CHOICE ── */
+  .mc-block {
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    background: var(--surface);
+  }
+  .mc-q {
+    font-size: 16px; line-height: 1.65;
+    color: var(--text); margin-bottom: 14px; font-weight: 500;
+  }
+  .mc-opts { display: flex; flex-direction: column; gap: 8px; }
+
+  .mc-opt {
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 15px;
+    font-size: 15px; line-height: 1.5;
+    cursor: pointer; color: var(--text);
+    background: var(--surface);
+    text-align: left; width: 100%;
+    min-height: 52px;
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .mc-opt:hover:not([aria-disabled="true"]) {
+    border-color: var(--purple); background: var(--purple-light);
+  }
+  .mc-opt:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+  .mc-opt[aria-checked="true"] {
+    border-color: var(--purple); background: var(--purple-light); color: var(--purple-dark);
+  }
+  .mc-opt.correct {
+    border-color: var(--teal); background: var(--teal-light); color: var(--teal-dark);
+  }
+  .mc-opt.wrong {
+    border-color: var(--red); background: var(--red-light); color: var(--red-dark);
+  }
+
+  .rdot {
+    width: 20px; height: 20px; border-radius: 50%;
+    border: 2px solid currentColor; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .mc-opt[aria-checked="true"] .rdot::after,
+  .mc-opt.correct .rdot::after {
+    content: ''; width: 9px; height: 9px;
+    border-radius: 50%; background: currentColor;
+  }
+
+  /* ── BUTTONS ── */
+  .check-btn {
+    border: 2px solid var(--border-strong);
+    border-radius: 10px;
+    padding: 13px 30px;
+    font-size: 16px; font-weight: 500;
+    cursor: pointer;
+    background: var(--surface); color: var(--text);
+    margin-top: 18px; min-height: 54px;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.18s;
+  }
+  .check-btn:hover:not(:disabled) {
+    background: var(--purple-light); border-color: var(--purple); color: var(--purple-dark);
+  }
+  .check-btn:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+  .check-btn:disabled { opacity: 0.4; cursor: default; }
+
+  /* ── RESULT BANNER ── */
+  .result {
+    border-radius: 12px; padding: 18px 20px;
+    margin-top: 1.25rem; font-size: 16px;
+    line-height: 1.65; border: 2px solid;
+  }
+  .result.good { background: var(--teal-light); color: var(--teal-dark); border-color: var(--teal); }
+  .result.ok { background: var(--amber-light); color: #633806; border-color: var(--amber); }
+  .result.low { background: var(--red-light); color: var(--red-dark); border-color: var(--red); }
+
+  hr.div {
+    border: none; border-top: 1.5px solid var(--border);
+    margin: 2rem 0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 520px) {
+    .match-grid { grid-template-columns: 1fr; }
+    .match-col { gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+<div class="live-region" aria-live="polite" aria-atomic="true" id="live"></div>
+
+<header>
+  <div class="header-tag">SPAN 2101 · Capítulo 14 · Conectados</div>
+  <h1>Quiz de vocabulario:<br>La vida académica y la salud</h1>
+  <p>Actividad asincrónica. Todo se califica automáticamente — no hay que entregar nada.</p>
+</header>
+
+<main id="main-content">
+
+  <div class="note" role="note">
+    <strong>Nota:</strong> Este quiz incluye el vocabulario confirmado del Capítulo 14. Algunas palabras adicionales de la lista del libro pueden no aparecer aquí. Consulta a tu profesor si tienes dudas.
+  </div>
+
+  <div class="score-row" role="status" aria-label="Puntaje actual">
+    <div class="score-pill">Empareja: <strong><span id="mScore">0</span> / <span id="mTotal">0</span></strong></div>
+    <div class="score-pill">Opción múltiple: <strong><span id="mcScore">0</span> / <span id="mcTotal">0</span></strong></div>
+  </div>
+
+  <div class="tab-row" role="tablist" aria-label="Secciones del quiz">
+    <button class="tab-btn" role="tab" aria-selected="true"
+      aria-controls="tab-match" id="btn-match" onclick="switchTab('match')">
+      Actividad 1: Empareja
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false"
+      aria-controls="tab-mc" id="btn-mc" onclick="switchTab('mc')">
+      Actividad 2: Opción múltiple
+    </button>
+  </div>
+
+  <!-- ── TAB 1: MATCHING ── -->
+  <div id="tab-match" role="tabpanel" aria-labelledby="btn-match" class="tab-panel active">
+
+    <p class="instructions" id="match-instr">
+      Selecciona una palabra en español y luego su equivalente en inglés.
+      Usa <kbd>Tab</kbd> para moverte entre opciones y <kbd>Enter</kbd> o <kbd>Espacio</kbd> para seleccionar.
+    </p>
+
+    <h2 class="sec-label" id="h-acad">La vida académica</h2>
+    <div class="match-grid" role="group" aria-labelledby="h-acad" aria-describedby="match-instr">
+      <div class="match-col" id="es-acad" aria-label="Palabras en español"></div>
+      <div class="match-col" id="en-acad" aria-label="Palabras en inglés"></div>
+    </div>
+    <div class="match-fb" id="fb-acad" aria-live="polite" aria-atomic="true"></div>
+
+    <hr class="div">
+
+    <h2 class="sec-label" id="h-health">La salud y la sala de urgencias</h2>
+    <div class="match-grid" role="group" aria-labelledby="h-health" aria-describedby="match-instr">
+      <div class="match-col" id="es-health" aria-label="Palabras en español"></div>
+      <div class="match-col" id="en-health" aria-label="Palabras en inglés"></div>
+    </div>
+    <div class="match-fb" id="fb-health" aria-live="polite" aria-atomic="true"></div>
+
+  </div>
+
+  <!-- ── TAB 2: MULTIPLE CHOICE ── -->
+  <div id="tab-mc" role="tabpanel" aria-labelledby="btn-mc" class="tab-panel">
+
+    <p class="instructions">
+      Lee cada situación y selecciona la respuesta más lógica.
+      Usa <kbd>Tab</kbd> para navegar y <kbd>Enter</kbd> o <kbd>Espacio</kbd> para seleccionar.
+      Cuando termines, haz clic en "Verificar respuestas".
+    </p>
+
+    <div id="mc-container"></div>
+    <button class="check-btn" id="checkBtn" onclick="checkMC()">
+      Verificar respuestas
+    </button>
+    <div id="mc-result" aria-live="polite" aria-atomic="true"></div>
+
+  </div>
+
+</main>
+
+<script>
+// ── Live region announcer ────────────────────────────────────────────────
+function say(msg) {
+  const el = document.getElementById('live');
+  el.textContent = '';
+  setTimeout(() => { el.textContent = msg; }, 60);
+}
+
+// ── VOCABULARY DATA (Conectados Ch. 14, confirmed) ───────────────────────
+const acadPairs = [
+  ['el apunte',              'class note'],
+  ['la beca',                'scholarship'],
+  ['la conferencia',         'lecture / conference'],
+  ['el curso',               'course'],
+  ['el informe para entregar','paper / report to hand in'],
+  ['el plagio',              'plagiarism'],
+  ['la responsabilidad',     'responsibility'],
+  ['la prueba',              'quiz / test'],
+  ['la tarea',               'homework'],
+  ['el trabajo',             'work / assignment'],
+];
+
+const healthPairs = [
+  ['el catarro / resfriado', 'cold (illness)'],
+  ['el dolor de cabeza',     'headache'],
+  ['la fiebre',              'fever'],
+  ['la gripe',               'flu'],
+  ['la herida',              'wound / injury'],
+  ['la náusea',              'nausea'],
+  ['la tos',                 'cough'],
+  ['el/la enfermero/a',      'nurse'],
+  ['el/la médico/a',         'doctor'],
+  ['la sala de urgencias',   'emergency room'],
+];
+
+// ── MC QUESTIONS ─────────────────────────────────────────────────────────
+const mcQs = [
+  {
+    q: 'María necesita presentar su investigación al final del semestre. ¿Qué tiene que preparar?',
+    opts: ['Una prueba', 'Un informe para entregar', 'Una beca', 'Un catarro'],
+    ans: 1
+  },
+  {
+    q: 'El profesor dice que copiar el trabajo de otro estudiante es muy serio. ¿De qué habla?',
+    opts: ['De la responsabilidad', 'Del plagio', 'Del apunte', 'De la gripe'],
+    ans: 1
+  },
+  {
+    q: 'Carlos tiene 39°C de temperatura, le duele el cuerpo y estornuda mucho. ¿Qué tiene probablemente?',
+    opts: ['Una herida', 'Un plagio', 'La gripe', 'Una beca'],
+    ans: 2
+  },
+  {
+    q: 'La doctora examina al paciente y escribe los medicamentos que necesita. ¿Qué hace?',
+    opts: ['Guardar cama', 'Toser', 'Recetar', 'Mejorar'],
+    ans: 2
+  },
+  {
+    q: 'Ana está muy enferma y el médico le dice que no puede levantarse. ¿Qué debe hacer?',
+    opts: ['Guardar cama', 'Tomar apuntes', 'Entregar el informe', 'Sacar buenas notas'],
+    ans: 0
+  },
+  {
+    q: 'El estudiante trabaja 40 horas a la semana y también estudia. ¿Cómo estudia?',
+    opts: ['A tiempo completo', 'A tiempo parcial', 'Con una beca', 'En la farmacia'],
+    ans: 1
+  },
+  {
+    q: '¿Adónde va Luisa para comprar los medicamentos que le recetó el médico?',
+    opts: ['Al consultorio', 'A la sala de urgencias', 'A la farmacia', 'A la conferencia'],
+    ans: 2
+  },
+  {
+    q: 'Roberto tiene una herida grave en el brazo. ¿Adónde debe ir de urgencia?',
+    opts: ['A la biblioteca', 'A la sala de urgencias', 'Al laboratorio', 'A entregar el informe'],
+    ans: 1
+  },
+  {
+    q: 'La enfermera le pregunta si tiene tos, fiebre o náuseas. ¿Por qué?',
+    opts: ['Para recetar una beca', 'Para evaluar sus síntomas', 'Para darle una prueba', 'Para tomar apuntes'],
+    ans: 1
+  },
+  {
+    q: 'El paciente estaba muy mal pero ahora se siente mejor. ¿Qué está pasando?',
+    opts: ['Se está enfermando', 'Tiene fiebre', 'Está mejorando', 'Tiene que guardar cama'],
+    ans: 2
+  },
+];
+
+// ── UTILITIES ────────────────────────────────────────────────────────────
+function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
+
+// ── MATCHING SETUP ───────────────────────────────────────────────────────
+document.getElementById('mTotal').textContent = acadPairs.length + healthPairs.length;
+
+const matchState = {
+  acad:   { sel: null, done: 0 },
+  health: { sel: null, done: 0 },
+};
+let matchCorrect = 0;
+
+function buildMatch(esId, enId, pairs, group) {
+  const esCol = document.getElementById(esId);
+  const enCol = document.getElementById(enId);
+  shuffle(pairs).forEach(p => esCol.appendChild(mkCard(p[0], 'es', group, p[0])));
+  shuffle(pairs).forEach(p => enCol.appendChild(mkCard(p[1], 'en', group, p[0])));
+}
+
+function mkCard(text, side, group, key) {
+  const btn = document.createElement('button');
+  btn.className = 'match-card';
+  btn.textContent = text;
+  btn.dataset.key  = key;
+  btn.dataset.side = side;
+  btn.dataset.group = group;
+  btn.setAttribute('aria-pressed', 'false');
+  btn.setAttribute('aria-label',
+    `${side === 'es' ? 'Español' : 'Inglés'}: ${text}. Pulsa para seleccionar.`);
+  btn.onclick   = () => handleMatch(btn, group);
+  btn.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); } };
+  return btn;
+}
+
+function handleMatch(btn, group) {
+  if (btn.classList.contains('matched') || btn.getAttribute('aria-disabled') === 'true') return;
+  const st = matchState[group];
+  const fb = document.getElementById('fb-' + group);
+  const pairs = group === 'acad' ? acadPairs : healthPairs;
+
+  if (!st.sel) {
+    document.querySelectorAll(`[data-group="${group}"]`).forEach(c => {
+      c.setAttribute('aria-pressed', 'false');
+      c.classList.remove('wrong');
+    });
+    btn.setAttribute('aria-pressed', 'true');
+    st.sel = btn;
+    say(`Seleccionado: ${btn.textContent}. Ahora selecciona la pareja.`);
+    return;
+  }
+
+  if (st.sel === btn) {
+    btn.setAttribute('aria-pressed', 'false');
+    st.sel = null;
+    say('Selección cancelada.');
+    return;
+  }
+
+  if (st.sel.dataset.side === btn.dataset.side) {
+    st.sel.setAttribute('aria-pressed', 'false');
+    st.sel = btn;
+    btn.setAttribute('aria-pressed', 'true');
+    say(`Seleccionado: ${btn.textContent}. Ahora selecciona la pareja.`);
+    return;
+  }
+
+  const esEl = st.sel.dataset.side === 'es' ? st.sel : btn;
+  const enEl = st.sel.dataset.side === 'en' ? st.sel : btn;
+  const isOk = esEl.dataset.key === enEl.dataset.key;
+
+  if (isOk) {
+    [esEl, enEl].forEach(el => {
+      el.setAttribute('aria-pressed', 'false');
+      el.setAttribute('aria-disabled', 'true');
+      el.classList.add('matched');
+      el.setAttribute('aria-label', `Correcto: ${el.textContent}`);
+    });
+    matchCorrect++;
+    st.done++;
+    document.getElementById('mScore').textContent = matchCorrect;
+    const msg = st.done === pairs.length
+      ? `¡Perfecto! Completaste todas las parejas de ${group === 'acad' ? 'vida académica' : 'salud'}.`
+      : `¡Correcto! ${esEl.textContent} — ${enEl.textContent}.`;
+    fb.textContent = msg;
+    fb.className = 'match-fb ok';
+    say(msg);
+  } else {
+    [esEl, enEl].forEach(el => {
+      el.classList.add('wrong');
+      el.setAttribute('aria-label', `Incorrecto: ${el.textContent}. Intenta de nuevo.`);
+    });
+    const msg = 'Esa no es la pareja correcta. Inténtalo de nuevo.';
+    fb.textContent = msg;
+    fb.className = 'match-fb err';
+    say(msg);
+    setTimeout(() => {
+      [esEl, enEl].forEach(el => {
+        el.classList.remove('wrong');
+        el.setAttribute('aria-pressed', 'false');
+        el.setAttribute('aria-label',
+          `${el.dataset.side === 'es' ? 'Español' : 'Inglés'}: ${el.textContent}. Pulsa para seleccionar.`);
+      });
+    }, 800);
+  }
+  st.sel = null;
+}
+
+buildMatch('es-acad',   'en-acad',   acadPairs,   'acad');
+buildMatch('es-health', 'en-health', healthPairs, 'health');
+
+// ── MC SETUP ─────────────────────────────────────────────────────────────
+const shuffledMC = shuffle(mcQs);
+document.getElementById('mcTotal').textContent = shuffledMC.length;
+
+shuffledMC.forEach((q, qi) => {
+  const block = document.createElement('div');
+  block.className = 'mc-block';
+  const qid = `mcq-${qi}`;
+  block.innerHTML = `
+    <div class="mc-q" id="${qid}">${qi + 1}. ${q.q}</div>
+    <div class="mc-opts" role="radiogroup" aria-labelledby="${qid}" id="opts-${qi}"></div>
+  `;
+  document.getElementById('mc-container').appendChild(block);
+
+  const od = document.getElementById('opts-' + qi);
+  q.opts.forEach((opt, oi) => {
+    const b = document.createElement('button');
+    b.className = 'mc-opt';
+    b.setAttribute('role', 'radio');
+    b.setAttribute('aria-checked', 'false');
+    b.setAttribute('aria-label', `Opción ${oi + 1}: ${opt}`);
+    b.dataset.oi = oi;
+    b.innerHTML = `<span class="rdot" aria-hidden="true"></span><span>${opt}</span>`;
+    b.onclick = () => {
+      if (b.getAttribute('aria-disabled') === 'true') return;
+      od.querySelectorAll('.mc-opt').forEach(x => x.setAttribute('aria-checked', 'false'));
+      b.setAttribute('aria-checked', 'true');
+      say(`Seleccionado: ${opt}`);
+    };
+    b.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); b.click(); } };
+    od.appendChild(b);
+  });
+});
+
+// ── CHECK MC ─────────────────────────────────────────────────────────────
+function checkMC() {
+  let correct = 0;
+  shuffledMC.forEach((q, qi) => {
+    document.querySelectorAll(`#opts-${qi} .mc-opt`).forEach(b => {
+      const oi = parseInt(b.dataset.oi);
+      const chosen = b.getAttribute('aria-checked') === 'true';
+      b.setAttribute('aria-disabled', 'true');
+      if (chosen) {
+        if (oi === q.ans) {
+          b.classList.add('correct'); correct++;
+          b.setAttribute('aria-label', `Correcto: ${q.opts[oi]}`);
+        } else {
+          b.classList.add('wrong');
+          b.setAttribute('aria-label', `Incorrecto: ${q.opts[oi]}`);
+        }
+      } else if (oi === q.ans) {
+        b.classList.add('correct');
+        b.setAttribute('aria-label', `Respuesta correcta: ${q.opts[oi]}`);
+      }
+    });
+  });
+
+  document.getElementById('checkBtn').disabled = true;
+  document.getElementById('mcScore').textContent = correct;
+  const total = shuffledMC.length;
+  const pct = Math.round((correct / total) * 100);
+  const cls = pct >= 80 ? 'good' : pct >= 60 ? 'ok' : 'low';
+  const msg = pct >= 80
+    ? `¡Excelente! Obtuviste ${correct} de ${total} correctas — ${pct}%.`
+    : pct >= 60
+    ? `Buen esfuerzo. Obtuviste ${correct} de ${total} correctas — ${pct}%. Repasa el vocabulario e inténtalo de nuevo.`
+    : `Obtuviste ${correct} de ${total} correctas — ${pct}%. Te recomendamos repasar el vocabulario antes de volver a intentarlo.`;
+
+  document.getElementById('mc-result').innerHTML =
+    `<div class="result ${cls}" role="alert">${msg}</div>`;
+  say(msg);
+}
+
+// ── TAB SWITCH ───────────────────────────────────────────────────────────
+function switchTab(tab) {
+  document.getElementById('tab-match').classList.toggle('active', tab === 'match');
+  document.getElementById('tab-mc').classList.toggle('active', tab === 'mc');
+  document.getElementById('btn-match').setAttribute('aria-selected', tab === 'match');
+  document.getElementById('btn-mc').setAttribute('aria-selected', tab === 'mc');
+}
+</script>
+
+</body>
+</html>
